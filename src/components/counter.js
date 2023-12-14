@@ -28,18 +28,6 @@ const Countdown = ({ targetDate }) => {
     }, []);
 
     return (
-        // <div>
-        //     {timeLeft.days ? <h2><span>{timeLeft.days} days </span></h2> : null}
-        //     {timeLeft.hours ? <h2><span>{timeLeft.hours} hours </span></h2> : null}
-        //     {timeLeft.minutes ? <h2><span>{timeLeft.minutes} minutes </span></h2> : null}
-        //     {timeLeft.seconds ? <h2><span>{timeLeft.seconds} seconds </span></h2> : null}
-        //     {/* {timeLeft.days ? <h2>{timeLeft.days} days</h2> : null}
-        //     {timeLeft.hours ? <h2>{timeLeft.hours} hours </h2> : null}
-        //     {timeLeft.minutes ? <h2><span>{timeLeft.minutes} minutes </span></h2> : null}
-        //     {timeLeft.seconds ? <h2><span>{timeLeft.seconds} seconds </span></h2> : null} */}
-
-        //     {Object.keys(timeLeft).length === 0 && <span>Countdown expired!</span>}
-        // </div>
         <div style={styles.container}>
             {timeLeft.days ? (
                 <h2 style={styles.text}>{timeLeft.days} days </h2>
