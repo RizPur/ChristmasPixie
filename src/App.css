@@ -1,26 +1,13 @@
 .App {
-  position: relative; /* This ensures that the z-index is applied correctly */
-  z-index: 1; /* Higher z-index so it's above the video */
+  position: relative;
+  z-index: 1;
   color: white;
   font-family: 'Arial', sans-serif;
   text-align: center;
   padding: 10px;
-  height: 100vh; /* Set the height to fill the screen */
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-30px);
-  }
-  60% {
-    transform: translateY(-15px);
-  }
-}
-
-.animated-title {
-  font-size: 2em;
-  animation: bounce 2s infinite;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

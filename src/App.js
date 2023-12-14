@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
+import Button from '@mui/material/Button';
 
 function App() {
   return (
     <div className="App">
-      <div style={{ zIndex: 2 }}>
-        Ackee and Morou Christmas Pixie
-      </div>
+      <h1 style={{ fontSize: '6em', fontWeight: 'bold', marginBottom: '20px' }}>Christmas Pixie</h1>
+      <Button variant="contained" color="primary" style={{ fontSize: '2.5em' }}>
+        Join
+      </Button>
       <video autoPlay loop muted style={{
         position: "absolute",
         width: "100%",
