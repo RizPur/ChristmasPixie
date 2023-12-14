@@ -1,6 +1,28 @@
 .App {
+  background: linear-gradient(to right, #006400, #09b642, #006400); /* Christmas colors with a Jamaican twist */
+  color: rgb(255, 255, 255);
+  font-family: 'Arial', sans-serif;
   text-align: center;
+  padding: 10px;
 }
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.animated-title {
+  font-size: 2em;
+  animation: bounce 2s infinite;
+}
+
 
 .App-logo {
   height: 40vmin;
