@@ -55,12 +55,19 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',
+        backgroundColor: '#ffff77',
+        borderRadius: '15px',
+        padding: '20px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // subtle shadow for depth
+        margin: '20px auto',
     },
     text: {
         margin: '0 10px',
-        color: '#333',
-        fontFamily: 'Arial, sans-serif',
-        fontSize: '24px',
+        color: '#d32f2f', 
+        fontFamily: '"Mountains of Christmas", cursive', 
+        fontSize: '28px',
+        fontWeight: 'bold',
+        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)', 
     },
 };
 

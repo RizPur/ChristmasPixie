@@ -39,6 +39,23 @@ app.post("/submit-form", (req, res) => {
   });
 });
 
+app.get('/get-data', (req, res) => {
+  const filePath = path.join(__dirname, 'data.json');
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error("Error reading file:", err);
+      res.status(500).send('Error reading file');
+    } else {
+      res.setHeader('Content-Type', 'application/json');
+      res.send(data);
+    }
+  });
+});
+
+
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
+
+

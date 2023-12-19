@@ -12,6 +12,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Countdown from "./components/counter";
+import Person from "./components/person";
 
 const toastOptions = {
   position: "top-center",
@@ -25,9 +26,13 @@ const toastOptions = {
 
 function App() {
   const [open, setOpen] = useState(false);
+
   const [name, setName] = useState("");
   const [likes, setLikes] = useState("");
   const [email, setEmail] = useState("");
+
+  const [people, setPeople] = useState([])
+
   const treeRef = useRef(null);
   const fireRef = useRef(null);
 
@@ -55,9 +60,16 @@ function App() {
     return () => {
       treeAnim.destroy();
       fireAnim.destroy();
-      // Add any cleanup logic here
     };
   }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/get-data')
+      .then(response => response.json())
+      .then(data => setPeople(data))
+      .catch(error => console.error("Error fetching data:", error));
+  }, []);
+  
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -77,7 +89,7 @@ function App() {
       .then((response) => response.text())
       .then((data) => {
         toast.success(
-          `🎉 Yay! Thanks, ${name}! Your preferences have been saved!`,
+          `🎉 Yay! Thanks, ${name}! You're a good yute!`,
           toastOptions
         );
         handleClose(); // Close the modal after submission
@@ -118,6 +130,11 @@ function App() {
           right: "30px",
         }}
       ></div>
+      {/* <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+      {people.map((person, index) => (
+        <Person key={index} person={person} />
+      ))}
+      </div> */}
       <Modal
         open={open}
         onClose={handleClose}
