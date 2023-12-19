@@ -130,11 +130,17 @@ function App() {
           right: "30px",
         }}
       ></div>
-      {/* <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-      {people.map((person, index) => (
-        <Person key={index} person={person} />
-      ))}
-      </div> */}
+      <div className="person-container">
+        {people.map((person, index) => (
+          <div style={{
+            position: 'absolute',
+            top: `${Math.random() * 80}%`, // Randomize position
+            left: `${Math.random() * 80}%`
+          }}>
+            <Person key={index} person={person} />
+          </div>
+        ))}
+      </div>
       <Modal
         open={open}
         onClose={handleClose}

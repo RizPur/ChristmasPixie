@@ -10,10 +10,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 h1 {
   font-family: "Mountains of Christmas", cursive;
+}
+
+.person-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .animation-container {
@@ -29,4 +41,9 @@ h1 {
   position: "absolute";
   bottom: "30px";
   right: "30px";
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }

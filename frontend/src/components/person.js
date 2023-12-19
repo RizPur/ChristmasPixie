@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react'; 
+
 
 const Person = ({ person }) => {
-    const styles = {
+
+  const bubbleColors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
+  const color = bubbleColors[Math.floor(Math.random() * bubbleColors.length)];
+  const styles = {
       container: {
         width: '100px',
         height: '100px',
-        backgroundColor: '#f0f0f0',
+        backgroundColor: color,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -13,6 +17,7 @@ const Person = ({ person }) => {
         margin: '10px',
         cursor: 'pointer',
         transition: 'transform 0.3s ease',
+        animation: 'float 6s ease-in-out infinite',
       },
       name: {
         opacity: 0,
@@ -26,6 +31,8 @@ const Person = ({ person }) => {
       nameHover: {
         opacity: 1
       }
+
+      
     };
   
     const [hover, setHover] = useState(false);
