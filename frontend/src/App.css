@@ -2,7 +2,7 @@
   position: relative;
   z-index: 1;
   color: white;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   text-align: center;
   padding: 10px;
   height: 100vh;
@@ -13,5 +13,20 @@
 }
 
 h1 {
-  font-family: 'Mountains of Christmas', cursive;
+  font-family: "Mountains of Christmas", cursive;
+}
+
+.animation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.App.fire {
+  width: 200;
+  height: 200;
+  position: "absolute";
+  bottom: "30px";
+  right: "30px";
 }

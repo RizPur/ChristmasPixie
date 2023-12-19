@@ -11,6 +11,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import EmailIcon from "@mui/icons-material/Email";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Countdown from "./components/counter";
 
 const toastOptions = {
   position: "top-center",
@@ -27,19 +28,35 @@ function App() {
   const [name, setName] = useState("");
   const [likes, setLikes] = useState("");
   const [email, setEmail] = useState("");
+  const treeRef = useRef(null);
+  const fireRef = useRef(null);
 
   const animationContainer = useRef(null);
 
   useEffect(() => {
-    const anim = lottie.loadAnimation({
-      container: animationContainer.current,
+    // Load the Lottie christmas-tree
+    const treeAnim = lottie.loadAnimation({
+      container: treeRef.current,
       renderer: "svg",
       loop: true,
       autoplay: true,
       path: "/christmas-tree.json",
     });
 
-    return () => anim.destroy();
+    // Load the Lottie fire
+    const fireAnim = lottie.loadAnimation({
+      container: fireRef.current,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      path: "/fire.json",
+    });
+
+    return () => {
+      treeAnim.destroy();
+      fireAnim.destroy();
+      // Add any cleanup logic here
+    };
   }, []);
 
   const handleOpen = () => setOpen(true);
@@ -75,6 +92,7 @@ function App() {
   };
   return (
     <div className="App">
+      <Countdown targetDate={new Date("December 22, 2023 23:59:59")} />
       <h1 style={{ fontSize: "4em", fontWeight: "bold", marginBottom: "20px" }}>
         A&M Christmas Pixie
       </h1>
@@ -86,6 +104,20 @@ function App() {
       >
         Join
       </Button>
+      <div
+        ref={treeRef}
+        style={{ width: 400, height: 400, margin: "0 auto" }}
+      ></div>
+      <div
+        ref={fireRef}
+        style={{
+          width: 200,
+          height: 200,
+          position: "absolute",
+          bottom: "30px",
+          right: "30px",
+        }}
+      ></div>
       <Modal
         open={open}
         onClose={handleClose}
