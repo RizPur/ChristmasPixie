@@ -9,6 +9,15 @@ const App = () => {
   const fireRef = useRef(null);
 
   useEffect(() => {
+    fetch("http://localhost:3001/get-data")
+      .then((response) => response.json())
+      .then((data) => {
+        setSignedUpNames(data.map((item) => item.name)); // Assuming each item has a 'name' property
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+
     // Lad othe Lottie christmas-tree
     const treeAnim = lottie.loadAnimation({
       container: treeRef.current,
@@ -38,7 +47,7 @@ const App = () => {
       <h1 style={{ fontSize: "4em", fontWeight: "bold", marginBottom: "20px" }}>
         A&M Christmas Pixie
       </h1>
-      <Button variant="contained" color="primary" style={{ fontSize: "1.5em" }}>
+      <Button variant="contained" color="primary" className="join-button">
         Join
       </Button>
       <div

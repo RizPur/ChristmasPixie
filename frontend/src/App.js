@@ -12,6 +12,9 @@ import EmailIcon from "@mui/icons-material/Email";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Countdown from "./components/counter";
+import musicFile from "./ChristmasMusic.mp3";
+import IconButton from "@mui/material/IconButton";
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
 
 const toastOptions = {
   position: "top-center",
@@ -30,10 +33,47 @@ function App() {
   const [email, setEmail] = useState("");
   const treeRef = useRef(null);
   const fireRef = useRef(null);
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  const [signedUpNames, setSignedUpNames] = useState([]);
 
   const animationContainer = useRef(null);
 
+  const fetchUsers = () => {
+    fetch("http://localhost:3001/get-data")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Fetched data:", data);
+        setSignedUpNames(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+
+  const handlePairUsers = () => {
+    fetch("http://localhost:3001/pair-users", { method: "POST" })
+      .then(() => {
+        toast.success("Users paired successfully!", toastOptions);
+        fetchUsers(); // Refresh the user list
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        toast.error("Error pairing users.", toastOptions);
+      });
+  };
   useEffect(() => {
+    fetchUsers();
+
+    // Exist
+    const savedNames = JSON.parse(localStorage.getItem("signedUpNames"));
+    if (savedNames) {
+      setSignedUpNames(savedNames);
+    }
+    let music = new Audio(musicFile);
+    music
+      .play()
+      .then(() => console.log("Music playback started"))
+      .catch((error) => console.error("Error playing music:", error));
     // Load the Lottie christmas-tree
     const treeAnim = lottie.loadAnimation({
       container: treeRef.current,
@@ -53,12 +93,37 @@ function App() {
     });
 
     return () => {
-      treeAnim.destroy();
-      fireAnim.destroy();
-      // Add any cleanup logic here
+      if (music) {
+        music.pause();
+        music.currentTime = 0;
+        treeAnim.destroy();
+        fireAnim.destroy();
+      }
     };
-  }, []);
+  }, [isMusicPlaying]);
 
+  const renderGiftBoxes = () => {
+    const giftBoxImages = [
+      "/GiftBox1.svg",
+      "/GiftBox2.svg",
+      "/GiftBox3.svg",
+      "/GiftBox4.svg",
+    ];
+
+    return (
+      <div className="gift-box-wrapper">
+        {signedUpNames.map((item, index) => {
+          const giftBoxImage = giftBoxImages[index % giftBoxImages.length];
+          return (
+            <div key={index} className="gift-box">
+              <img src={giftBoxImage} alt="Gift Box" />
+              <span className="tooltip">{item.name}</span>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -75,12 +140,13 @@ function App() {
       body: JSON.stringify({ name, email, likes }),
     })
       .then((response) => response.text())
-      .then((data) => {
+      .then(() => {
         toast.success(
           `🎉 Yay! Thanks, ${name}! Your preferences have been saved!`,
           toastOptions
         );
         handleClose(); // Close the modal after submission
+        fetchUsers(); // Fetch updated users list
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -92,10 +158,26 @@ function App() {
   };
   return (
     <div className="App">
-      <Countdown targetDate={new Date("December 22, 2023 23:59:59")} />
+      <div className="countdown-timer">
+        <Countdown targetDate={new Date("December 22, 2023 23:59:59")} />
+      </div>
       <h1 style={{ fontSize: "4em", fontWeight: "bold", marginBottom: "20px" }}>
         A&M Christmas Pixie
       </h1>
+
+      <IconButton
+        onClick={() => setIsMusicPlaying(!isMusicPlaying)}
+        style={{
+          position: "fixed", // Fixed position
+          right: 10, // 10px from the right
+          bottom: 10, // 10px from the bottom
+          color: "gray", // Icon color
+          backgroundColor: "transparent", // Transparent background
+        }}
+        size="small" // Small size
+      >
+        <MusicNoteIcon />
+      </IconButton>
       <Button
         variant="contained"
         color="primary"
@@ -104,10 +186,10 @@ function App() {
       >
         Join
       </Button>
-      <div
-        ref={treeRef}
-        style={{ width: 400, height: 400, margin: "0 auto" }}
-      ></div>
+      <div className="christmas-scene">
+        <div ref={treeRef} className="christmas-tree"></div>
+        {renderGiftBoxes()}
+      </div>
       <div
         ref={fireRef}
         style={{

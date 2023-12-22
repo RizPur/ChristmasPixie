@@ -21,6 +21,15 @@ h1 {
   justify-content: center;
   align-items: center;
   color: white;
+  margin-top: -50px;
+}
+
+.play-music-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-color: transparent;
+  color: white; /* Change color as needed */
 }
 
 .App.fire {
@@ -29,4 +38,84 @@ h1 {
   position: "absolute";
   bottom: "30px";
   right: "30px";
+}
+
+.christmas-tree {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  margin-top: 220px; /* Adjust as needed */
+}
+
+/* In your CSS file */
+.countdown-timer {
+  color: white; /* Text color */
+  font-size: 2em; /* Larger font size */
+}
+
+/* If Countdown component has nested elements, you might need more specific selectors */
+.countdown-timer div,
+.countdown-timer span {
+  color: white;
+  font-size: 2em;
+}
+
+.gift-boxes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Adjust as needed */
+  /* Add more styles for positioning under the tree */
+}
+
+.gift-box img {
+  width: 30px; /* Adjust size as needed */
+  height: auto;
+}
+
+.gift-box {
+  position: relative;
+  display: inline-block; /* or flex, depending on your layout */
+  margin: 10px;
+}
+
+.gift-box-wrapper {
+  width: 75%; /* Adjust the width as needed */
+  margin: 0 auto; /* Centers the wrapper */
+  display: flex;
+  justify-content: center; /* Ensures contents are centered */
+  flex-wrap: wrap; /* Allows items to wrap within the container */
+}
+
+/* Video Background */
+video {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  min-height: 100vh; /* Ensure it covers the full height */
+  min-width: 100vw; /* Ensure it covers the full width */
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%; /* Position the tooltip above the image */
+  left: 50%;
+  margin-left: -60px; /* Center the tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.gift-box:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
 }

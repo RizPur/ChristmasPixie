@@ -1,17 +1,21 @@
 [
   {
-    "name": "",
-    "email": "",
-    "likes": ""
+    "name": "Douglas",
+    "likes": "techy gifts"
   },
   {
-    "name": "",
-    "email": "",
-    "likes": ""
+    "name": "jamie ",
+    "email": "jonny@gmail.com",
+    "likes": "Towels"
   },
   {
-    "name": "",
-    "email": "",
-    "likes": ""
+    "name": "Sashana",
+    "email": "sashana@gmail.com",
+    "likes": "heart stuff"
+  },
+  {
+    "name": "david",
+    "email": "david@gmail.com",
+    "likes": "food"
   }
 ]
