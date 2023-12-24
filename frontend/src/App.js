@@ -12,9 +12,9 @@ import EmailIcon from "@mui/icons-material/Email";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Countdown from "./components/counter";
-import musicFile from "./ChristmasMusic.mp3";
+// import musicFile from "./ChristmasMusic.mp3";
 import IconButton from "@mui/material/IconButton";
-import MusicNoteIcon from "@mui/icons-material/MusicNote";
+// import MusicNoteIcon from "@mui/icons-material/MusicNote";
 
 const toastOptions = {
   position: "top-center",
@@ -33,7 +33,7 @@ function App() {
   const [email, setEmail] = useState("");
   const treeRef = useRef(null);
   const fireRef = useRef(null);
-  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  // const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [signedUpNames, setSignedUpNames] = useState([]);
 
   const animationContainer = useRef(null);
@@ -69,11 +69,11 @@ function App() {
     if (savedNames) {
       setSignedUpNames(savedNames);
     }
-    let music = new Audio(musicFile);
-    music
-      .play()
-      .then(() => console.log("Music playback started"))
-      .catch((error) => console.error("Error playing music:", error));
+    // let music = new Audio(musicFile);
+    // music
+    //   .play()
+    //   .then(() => console.log("Music playback started"))
+    //   .catch((error) => console.error("Error playing music:", error));
     // Load the Lottie christmas-tree
     const treeAnim = lottie.loadAnimation({
       container: treeRef.current,
@@ -93,14 +93,14 @@ function App() {
     });
 
     return () => {
-      if (music) {
-        music.pause();
-        music.currentTime = 0;
-        treeAnim.destroy();
-        fireAnim.destroy();
-      }
+      // if (music) {
+      //   music.pause();
+      //   music.currentTime = 0;
+      treeAnim.destroy();
+      fireAnim.destroy();
+      // }
     };
-  }, [isMusicPlaying]);
+  }, []);
 
   const renderGiftBoxes = () => {
     const giftBoxImages = [
@@ -159,13 +159,13 @@ function App() {
   return (
     <div className="App">
       <div className="countdown-timer">
-        <Countdown targetDate={new Date("December 22, 2023 23:59:59")} />
+        <Countdown targetDate={new Date("December 29, 2023 23:59:59")} />
       </div>
       <h1 style={{ fontSize: "4em", fontWeight: "bold", marginBottom: "20px" }}>
         A&M Christmas Pixie
       </h1>
 
-      <IconButton
+      {/* <IconButton
         onClick={() => setIsMusicPlaying(!isMusicPlaying)}
         style={{
           position: "fixed", // Fixed position
@@ -176,8 +176,7 @@ function App() {
         }}
         size="small" // Small size
       >
-        <MusicNoteIcon />
-      </IconButton>
+      </IconButton> */}
       <Button
         variant="contained"
         color="primary"
