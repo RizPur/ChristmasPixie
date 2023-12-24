@@ -175,18 +175,30 @@ function App() {
       </IconButton> */}
       <Button
         variant="contained"
-        color="primary"
-        style={{ fontSize: "1.5em" }}
         onClick={handleOpen}
+        style={{
+          fontSize: "1em", // Smaller font size
+          backgroundColor: "#ff8a00", // Sunset-like lighter orange background
+          color: "white", // White text for contrast
+          padding: "8px 15px", // Smaller padding for a more compact look
+          borderRadius: "5px", // Slightly rounded corners
+          boxShadow: "0 3px 6px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
+          textTransform: "none", // Removes uppercase styling
+          fontWeight: "bold",
+          "&:hover": {
+            backgroundColor: "#ff9f40", // A slightly brighter orange on hover
+          },
+        }}
       >
         Join
       </Button>
+
       <div className="countdown-timer">
         <Countdown targetDate={new Date("December 29, 2023 23:59:59")} />
       </div>
       <div className="christmas-scene">
         <div ref={treeRef} className="christmas-tree"></div>
-        {/* {renderGiftBoxes()} */}
+        {renderGiftBoxes()}
       </div>
       <div
         ref={fireRef}
