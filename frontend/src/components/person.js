@@ -3,12 +3,12 @@ import React, { useState} from 'react';
 
 const Person = ({ person }) => {
 
-  const bubbleColors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
+  const bubbleColors = ['#ffb1b1', '#86a697', '#4e4eff', '#3590ae', '#FF00FF', '#00e6e6'];
   const color = bubbleColors[Math.floor(Math.random() * bubbleColors.length)];
   const styles = {
       container: {
-        width: '100px',
-        height: '100px',
+        width: '80px',
+        height: '80px',
         backgroundColor: color,
         display: 'flex',
         alignItems: 'center',
@@ -29,7 +29,7 @@ const Person = ({ person }) => {
         transform: 'scale(1.1)'
       },
       nameHover: {
-        opacity: 1
+        opacity: 0.8
       }
 
       

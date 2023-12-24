@@ -104,7 +104,7 @@ function App() {
   };
   return (
     <div className="App">
-      <Countdown targetDate={new Date("December 22, 2023 23:59:59")} />
+      <Countdown targetDate={new Date("December 28, 2023 23:59:59")} />
       <h1 style={{ fontSize: "4em", fontWeight: "bold", marginBottom: "20px" }}>
         A&M Christmas Pixie
       </h1>
@@ -134,7 +134,7 @@ function App() {
         {people.map((person, index) => (
           <div style={{
             position: 'absolute',
-            top: `${Math.random() * 80}%`, // Randomize position
+            top: `${Math.random() * 50}%`, // Randomize position below bottom half of screen
             left: `${Math.random() * 80}%`
           }}>
             <Person key={index} person={person} />
