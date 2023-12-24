@@ -158,13 +158,9 @@ function App() {
   };
   return (
     <div className="App">
-      <div className="countdown-timer">
-        <Countdown targetDate={new Date("December 29, 2023 23:59:59")} />
-      </div>
       <h1 style={{ fontSize: "4em", fontWeight: "bold", marginBottom: "20px" }}>
         A&M Christmas Pixie
       </h1>
-
       {/* <IconButton
         onClick={() => setIsMusicPlaying(!isMusicPlaying)}
         style={{
@@ -185,9 +181,12 @@ function App() {
       >
         Join
       </Button>
+      <div className="countdown-timer">
+        <Countdown targetDate={new Date("December 29, 2023 23:59:59")} />
+      </div>
       <div className="christmas-scene">
         <div ref={treeRef} className="christmas-tree"></div>
-        {renderGiftBoxes()}
+        {/* {renderGiftBoxes()} */}
       </div>
       <div
         ref={fireRef}
